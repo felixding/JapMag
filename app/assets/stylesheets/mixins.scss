@@ -1,0 +1,21 @@
+@mixin box-shadow($effect: 1px 0px 5px black) {
+	box-shadow: $effect;
+	-moz-box-shadow: $effect;
+	-webkit-box-shadow: $effect;
+}
+
+@mixin iphone($base_width) {
+	html {
+		-webkit-text-size-adjust: none;
+	}
+
+	#body {
+		width: $base_width;
+	}
+	
+	form.basic {	
+		input[type=text], input[type=email], input[type=password], textarea {
+			width: 95%;
+		}
+	}
+}
