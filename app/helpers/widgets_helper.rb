@@ -107,8 +107,7 @@ module WidgetsHelper
   # call to action
   #
   def cta text, url, html_options={}
-    default_html_options = {:class => "cta"}
-    html_options = default_html_options.merge(html_options)
+
     html_options[:class] = (html_options[:class].to_s + " cta").strip
 
     link_to content_tag(:span, text), url, html_options
