@@ -219,18 +219,6 @@ div.tab {
 }
 /* @end */
 
-.toolbar {
-	overflow: hidden;
-
-	.left {
-		float: left;
-	}
-
-	.right {
-		float: right;
-	}
-}
-
 /* @form.basic */
 form.basic {	
 	input[type=text], input[type=search], input[type=email], input[type=password], textarea {
@@ -315,40 +303,8 @@ img.avatar {
 	text-transform: uppercase;
 	white-space: nowrap;
 	background-color: #BFBFBF;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
+	@include rounded(3px);
 	line-height: 18px;
-
-	&.finished {
-		background-color: $color_green;
-	}
-
-	&.wishlist {
-		background-color: $color_pink;
-	}
-
-	&.reading {
-		background-color: $color_yellow;
-	}
-
-	&.rank {
-		background-color: transparent;
-		border: 1px solid #999;
-		color: #999;
-	}
-}
-
-.tag {
-	border: 0px solid;
-	padding: 0 5px 0 13px;
-	margin: 0 3px 3px 0;
-	float: left;
-	background: url(asset_path("tag.png", image)) no-repeat 0;
-
-	&.current:hover {
-		text-decoration: none;
-	}
 }
 
 /* scope button */
@@ -490,18 +446,4 @@ ul.scopes {
 .list {
 	list-style: disc;
 	margin: 0 0 9px 3em;
-}
-
-
-.block {
-	margin: 0 0 20px;
-	
-	h3 {
-		@include h3;
-	}
-	
-	table.basic th {
-		background: none;
-		font-weight: bold;
-	}
 }

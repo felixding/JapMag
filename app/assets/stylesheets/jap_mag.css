@@ -10,9 +10,7 @@
  *
  *= require_self
  *= require reset
- *= require_tree ./vendors
  *= require variables
  *= require widgets
  *= require base
- *= require_tree ./modules
  */
