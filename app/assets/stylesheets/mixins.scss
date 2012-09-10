@@ -16,8 +16,13 @@
 		-webkit-text-size-adjust: none;
 	}
 
+	body {
+		font-size: 14px;
+	}
+
 	#body {
-		width: $base_width;
+		width: $base_width - 10px;
+		padding: 5px;
 	}
 	
 	form.basic {	

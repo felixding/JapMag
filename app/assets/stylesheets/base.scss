@@ -54,10 +54,12 @@ h1 {
 
 h2 {
 	font-size: 1.6em;
+	line-height: 1.6em;
 }
 
 h3 {
 	font-size: 1.4em;
+	line-height: 1.4em;
 }
 
 p {
@@ -189,21 +191,21 @@ ol.list {
 
 /* iPhone 2G, 3G, 3GS Portrait */
 @media only screen and (device-width: 320px) and (orientation: portrait) {
-	@include iphone(300px);
+	@include iphone(320px);
 }
 
 /* iPhone 2G, 3G, 3GS Landscape */
 @media only screen and (max-device-width: 480px) and (orientation: landscape) {
 	/* CSS3 Rules for iPhone in Landscape Orientation */
-	@include iphone(460px);
+	@include iphone(480px);
 }
 
 /* iPhone 4, 4S Portrait */
 @media only screen and (device-width: 480px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-	@include iphone(300px);
+	@include iphone(320px);
 }
 
 /* iPhone 4, 4S Landscape */
 @media only screen and (device-width: 960px) and (orientation: landscape) {
-	@include iphone(460px);
+	@include iphone(480px);
 }
