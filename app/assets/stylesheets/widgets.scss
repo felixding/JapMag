@@ -91,7 +91,7 @@ table.basic {
 	td {
 		border-top: 1px solid #ccc;
 
-		.actions a {
+		&.actions a {
 			margin-right: 10px;
 		}
 
@@ -436,10 +436,12 @@ ul.scopes {
 	
 	.left {
 		float: left;
+		margin-right: 10px;
 	}
 	
 	.right {
 		float: right;
+		margin-left: 10px;
 	}
 }
 
