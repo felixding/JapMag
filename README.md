@@ -20,6 +20,10 @@ Or install it yourself as:
 
 ## Usage
 
+In your CSS manifest (application.css in default):
+
+     *= require jap_mag
+
 Documentation is one the way. Stay tuned!
 
 ## Contributing
