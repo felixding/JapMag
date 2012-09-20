@@ -391,16 +391,6 @@ ul.scopes {
 	border-top: 1px solid #eee;
 	overflow: hidden;
 
-	&.description {
-		.key {
-			display: none;
-		}
-
-		.value {
-			width: 100%;
-		}
-	}
-
 	.key {
 		float: left;
 		width: 200px;
