@@ -139,6 +139,11 @@ module WidgetsHelper
       end
     end
   end
+  
+  def last_deployed_at
+    file = File.join("tmp", "restart.txt")
+    File.exists?(file) ? File.atime(file) : nil
+  end
 
   protected
   
