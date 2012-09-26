@@ -11,7 +11,7 @@
 	-webkit-box-shadow: $effect;
 }
 
-@mixin iphone($base_width) {
+@mixin jap_mag_iphone($iphone_base_width) {
 	html {
 		-webkit-text-size-adjust: none;
 	}
@@ -21,8 +21,9 @@
 	}
 
 	#body {
-		width: $base_width - 10px;
-		padding: 5px;
+		width: $iphone_base_width - 20px;
+		padding: 10px;
+		margin: 0 auto;
 	}
 	
 	form.basic {	

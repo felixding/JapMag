@@ -16,6 +16,13 @@ a {
 	color: $color_blue;
 	text-decoration: none;
 
+	&.dangerous {
+		color: red;
+	}
+	
+	&.edit {
+		color: $color_yellow;
+	}
 	
 	&:hover {
 		color: #fff;
@@ -37,7 +44,6 @@ em {
 
 h1, h2, h3, h4 {
 	font-weight: normal;
-	color: black;
 	line-height: 1em;
 	margin: 0 0 1em;
 	-webkit-font-smoothing: antialiased;
@@ -174,13 +180,13 @@ blockquote {
     color: #fff;
 	}
  
-	ul li {
-	    list-style: square;
+	ul {
+	  list-style: square;
+		@extend .list;
 	} 
 }
 
-ol.list {
-	list-style: decimal;
+.list {
 	margin: 1em 0;
 	padding: 0 0 0 4em;
 	
@@ -190,22 +196,22 @@ ol.list {
 }
 
 /* iPhone 2G, 3G, 3GS Portrait */
-@media only screen and (device-width: 320px) and (orientation: portrait) {
-	@include iphone(320px);
+@media only screen and (max-device-width: 320px) and (orientation: portrait) {
+	@include jap_mag_iphone(320px);
 }
 
 /* iPhone 2G, 3G, 3GS Landscape */
 @media only screen and (max-device-width: 480px) and (orientation: landscape) {
 	/* CSS3 Rules for iPhone in Landscape Orientation */
-	@include iphone(480px);
+	@include jap_mag_iphone(480px);
 }
 
 /* iPhone 4, 4S Portrait */
 @media only screen and (device-width: 480px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-	@include iphone(320px);
+	@include jap_mag_iphone(320px);
 }
 
 /* iPhone 4, 4S Landscape */
 @media only screen and (device-width: 960px) and (orientation: landscape) {
-	@include iphone(480px);
+	@include jap_mag_iphone(480px);
 }
