@@ -1,0 +1,1 @@
+//= require jap_mag/base
