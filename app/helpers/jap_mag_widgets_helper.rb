@@ -16,6 +16,13 @@ module JapMagWidgetsHelper
   def get_body_id
     content_for(:id).to_s.titleize.gsub(/\s/, "") unless content_for(:id).blank?
   end
+  
+  def get_wrapper_class
+    c = []
+    c << controller.action_name
+    
+    c.collect{|e| e.titleize.gsub(/\s/, "")}.join " "
+  end
 
   #
   # navigation helper

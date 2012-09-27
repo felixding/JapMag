@@ -26,6 +26,12 @@
 		margin: 0 auto;
 	}
 	
+	#body {
+		.primary {
+			margin: 0 0 10px 0;
+		}
+	}
+	
 	form.basic {	
 		input[type=text], input[type=email], input[type=password], textarea {
 			width: 95%;

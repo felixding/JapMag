@@ -12,7 +12,7 @@
 </head>
 
 <body class="<%= get_body_class %>"<%= " id=\"#{get_body_id}\"".html_safe if get_body_id  %>>
-	<div id="wrapper">
+	<div class="<%= get_wrapper_class %>" id="wrapper">
 		<%= render :partial => "/layouts/header" %>
 
 		<div id="body">
