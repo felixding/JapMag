@@ -11,11 +11,11 @@
 	<%= csrf_meta_tags %>
 </head>
 
-<body class="<%= controller.controller_name.titleize.gsub(/\s/, "") %>"<%= raw " id=\"#{content_for(:id).to_s.titleize.gsub(/\s/, "")}\"" unless content_for(:id).blank? %>>
-	<div class="<%= (controller.action_name).titleize.gsub(/\s/, "") %>" id="body">
+<body class="<%= get_body_class %>"<%= " id=\"#{get_body_id}\"".html_safe if get_body_id  %>>
+	<div id="wrapper">
 		<%= render :partial => "/layouts/header" %>
 
-		<div id="wrapper">
+		<div id="body">
 			<%= render :partial => "/layouts/flash", :locals => {:flash => flash} %>
 			<%= yield %>
 		</div>

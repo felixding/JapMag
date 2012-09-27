@@ -6,7 +6,7 @@ body {
 	color: $color_body;
 }
 
-#body {
+#wrapper {
 	width: $base_width;
 	padding: 10px;
 	margin: 0 auto;
@@ -112,7 +112,7 @@ blockquote {
 	}
 }
 
-#wrapper {
+#body {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
