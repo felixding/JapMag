@@ -69,7 +69,7 @@ h3 {
 }
 
 p {
-	margin: 1em 0;
+	margin: 0.5em 0;
 }
 
 blockquote {
@@ -91,6 +91,10 @@ blockquote {
 		overflow: hidden;
 		margin: 20px 0 0;
 		
+		&.left {
+			float: left;
+		}
+		
 		li {
 			float: left;
 			margin: 0 10px 0 0;
@@ -108,6 +112,18 @@ blockquote {
 					color: white;
 				}
 			}
+		}
+	}
+	
+	.admin-navigation {
+		@extend .navigation;
+		margin: 10px 0 0;
+		padding: 10px;
+		background: #eee;
+		float: left;
+		
+		li {
+			border: none;
 		}
 	}
 }
@@ -155,63 +171,30 @@ blockquote {
 	}
 }
 
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+
+/* iPhone 2G, 3G, 3GS, 4, 4S, 5 Portrait */
+@include iphone_portrait {
+	@include iphone_base(320px);
 }
 
-#error_explanation {
-  width: 450px;
-  border: 2px solid red;
-  padding: 7px;
-  padding-bottom: 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-
-  h2 {
-    text-align: left;
-    font-weight: bold;
-    padding: 5px 5px 5px 15px;
-    font-size: 1em;
-    margin: -7px;
-    margin-bottom: 0px;
-    background-color: #c00;
-    color: #fff;
-	}
- 
-	ul {
-	  list-style: square;
-		@extend .list;
-	} 
+/* iPhone 2G, 3G, 3GS, 4, 4S Landscape */
+@include iphone_4s_landscape {
+	@include iphone_base(480px);
 }
 
-.list {
-	margin: 1em 0;
-	padding: 0 0 0 4em;
-	
-	li {
-		margin: 0 0 0.5em 0;
-	}
-}
+/*
 
-/* iPhone 2G, 3G, 3GS Portrait */
-@media only screen and (max-device-width: 320px) and (orientation: portrait) {
-	@include jap_mag_iphone(320px);
-}
-
-/* iPhone 2G, 3G, 3GS Landscape */
 @media only screen and (max-device-width: 480px) and (orientation: landscape) {
-	/* CSS3 Rules for iPhone in Landscape Orientation */
 	@include jap_mag_iphone(480px);
 }
 
-/* iPhone 4, 4S Portrait */
+
 @media only screen and (device-width: 480px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
 	@include jap_mag_iphone(320px);
 }
 
-/* iPhone 4, 4S Landscape */
+
 @media only screen and (device-width: 960px) and (orientation: landscape) {
 	@include jap_mag_iphone(480px);
 }
+*/

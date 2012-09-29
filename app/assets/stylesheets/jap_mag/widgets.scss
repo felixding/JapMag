@@ -282,6 +282,16 @@ form.basic {
 			}
 		}
 	}
+	
+	ul.checkboxes {
+		li.checkbox {
+			margin: 0 0 10px;
+			
+			label {
+				margin: 0 0 0 5px;
+			}
+		}
+	}
 }
 /* @end */
 
@@ -437,6 +447,45 @@ ul.scopes {
 }
 
 .list {
-	list-style: disc;
-	margin: 0 0 9px 3em;
+	margin: 1em 0;
+	padding: 0 0 0 4em;
+	
+	li {
+		margin: 0 0 0.5em 0;
+	}
+}
+
+ol.list {
+	list-style-type: decimal;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 1em;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+	}
+ 
+	ul {
+	  list-style: square;
+		@extend .list;
+	} 
 }

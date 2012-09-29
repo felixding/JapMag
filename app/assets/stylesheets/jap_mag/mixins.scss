@@ -11,7 +11,7 @@
 	-webkit-box-shadow: $effect;
 }
 
-@mixin jap_mag_iphone($iphone_base_width) {
+@mixin iphone_base($iphone_base_width) {
 	html {
 		-webkit-text-size-adjust: none;
 	}
@@ -37,4 +37,22 @@
 			width: 95%;
 		}
 	}
+}
+
+/* iPhone 2G, 3G, 3GS, 4, 4S, 5 Portrait */
+@mixin iphone_portrait {
+	@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (orientation: portrait) {
+		@content;
+	}
+}
+
+/* iPhone 2G, 3G, 3GS, 4, 4S Landscape */
+@mixin iphone_4s_landscape {
+	@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (orientation: landscape) {
+		@content;
+	}
+}
+
+/* iPhone 5 Landscape */
+@mixin iphone_5_landscape {
 }
