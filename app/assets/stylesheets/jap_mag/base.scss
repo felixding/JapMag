@@ -170,31 +170,3 @@ blockquote {
 		}
 	}
 }
-
-
-/* iPhone 2G, 3G, 3GS, 4, 4S, 5 Portrait */
-@include iphone_portrait {
-	@include iphone_base(320px);
-}
-
-/* iPhone 2G, 3G, 3GS, 4, 4S Landscape */
-@include iphone_4s_landscape {
-	@include iphone_base(480px);
-}
-
-/*
-
-@media only screen and (max-device-width: 480px) and (orientation: landscape) {
-	@include jap_mag_iphone(480px);
-}
-
-
-@media only screen and (device-width: 480px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-	@include jap_mag_iphone(320px);
-}
-
-
-@media only screen and (device-width: 960px) and (orientation: landscape) {
-	@include jap_mag_iphone(480px);
-}
-*/

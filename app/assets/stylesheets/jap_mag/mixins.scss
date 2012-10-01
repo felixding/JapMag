@@ -42,6 +42,7 @@
 /* iPhone 2G, 3G, 3GS, 4, 4S, 5 Portrait */
 @mixin iphone_portrait {
 	@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (orientation: portrait) {
+		@include iphone_base(320px);
 		@content;
 	}
 }
@@ -49,6 +50,7 @@
 /* iPhone 2G, 3G, 3GS, 4, 4S Landscape */
 @mixin iphone_4s_landscape {
 	@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (orientation: landscape) {
+		@include iphone_base(480px);
 		@content;
 	}
 }
