@@ -11,7 +11,7 @@
 	-webkit-box-shadow: $effect;
 }
 
-@mixin iphone_base($iphone_base_width) {
+@mixin iphone_base {
 	html {
 		-webkit-text-size-adjust: none;
 	}
@@ -19,9 +19,8 @@
 	body {
 		font-size: 14px;
 	}
-
+	
 	#wrapper {
-		width: $iphone_base_width - 20px;
 		padding: 10px;
 		margin: 0 auto;
 	}
@@ -39,10 +38,16 @@
 	}
 }
 
+@mixin set_width($base_width) {
+	#wrapper {
+		width: $base_width - 20px;
+	}
+}
+
 /* iPhone 2G, 3G, 3GS, 4, 4S, 5 Portrait */
 @mixin iphone_portrait {
 	@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (orientation: portrait) {
-		@include iphone_base(320px);
+		@include set_width(320px);
 		@content;
 	}
 }
@@ -50,15 +55,15 @@
 /* iPhone 2G, 3G, 3GS, 4, 4S Landscape */
 @mixin iphone_4s_landscape {
 	@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (orientation: landscape) {
-		@include iphone_base(480px);
+		@include set_width(480px);
 		@content;
 	}
 }
 
 /* iPhone 5 Landscape */
 @mixin iphone_5_landscape {
-	@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape) {
-		@include iphone_base(568px);
+	@media only screen and (width: 568px) and (orientation: landscape) {
+		@include set_width(568px);
 		@content;
 	}
 }
