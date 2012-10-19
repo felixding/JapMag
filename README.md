@@ -2,7 +2,7 @@
 
 JapMag is the design language created by Felix Ding in the spring of 2012. The essential idea behind JapMag is Japanese Minimalism. It focuses on content itself, and aims to solve information overload. On interaction design, JapMag advocates a flat information architecutre, a one-task-one-step method and a natural content flow on each page. Visually, JapMag stresses typography, whitespace and uses graphical elements as little as possible. Technically, JapMag avoids using Javascript, or overriding browsers' default behaviors.
 
-This gem helps designers start a project that follows JapMag. It consists of several CSS definations, Rails helpers and view templates.
+This gem helps designers start a project that follows JapMag design language. It consists of several CSS definations, Rails helpers and view templates. Think this gem as an UI kit similar to Twitter's Bootstrap, but more tightly integrated with Ruby on Rails.
 
 ## Installation
 
