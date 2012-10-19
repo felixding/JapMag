@@ -6,25 +6,37 @@ This gem helps designers start a project that follows JapMag. It consists of sev
 
 ## Installation
 
+Please note JapMag only supports Rails 3+.
+
 Add this line to your application's Gemfile:
 
-    gem 'jap_mag'
+    gem 'jap_mag', git: "git://github.com/felixding/JapMag.git"
 
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install jap_mag
-
-## Usage
-
 In your CSS manifest (application.css in default):
 
      *= require jap_mag
 
-Documentation is one the way. Stay tuned!
+In your Javascript manifest (application.js in default):
+
+	 //= require jquery
+     //= require jquery_ujs
+     //= require jap_mag
+
+In your app/controllers/application_controll.rb, add
+
+     include JapMag
+     
+For a new Rails app, delete app/views/layout/application.html.erb.
+
+Done! Now start your Rails app and you will see a JapMag-powered website!
+     
+## Usage
+
+Documentation is on the way. Stay tuned!
 
 ## Contributing
 
