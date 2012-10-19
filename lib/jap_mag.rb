@@ -1,6 +1,4 @@
 module JapMag
-  VERSION = "0.0.3"
-  
   # i18N
   def _ key, options={}
     key = (key[0] == "/") ? key.gsub("/", "") : "#{params[:controller]}.#{params[:action]}.#{key}"
