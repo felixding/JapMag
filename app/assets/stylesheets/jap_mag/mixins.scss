@@ -67,3 +67,17 @@
 		@content;
 	}
 }
+
+/* all iPhone */
+@mixin iphone_portrait_and_landscape {
+	@include iphone_portrait {@content};
+	@include iphone_4s_landscape {@content};
+	@include iphone_5_landscape {@content};
+}
+
+/* Desktop, say, 960px width */
+@mixin desktop {
+	@media only screen and (min-width: 768px) {
+		@content;
+	}
+}
