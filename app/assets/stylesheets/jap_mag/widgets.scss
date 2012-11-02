@@ -74,6 +74,7 @@ table.basic {
 	margin: 0;
 	padding: 0;
 	width: 100%;
+	word-break: break-all;
 
 	td, & th {
 		margin: 0;
@@ -100,6 +101,14 @@ table.basic {
 
 	tr:last-child {
 		border-bottom: 1px solid #ccc;
+	}
+	
+	.ok {
+		background: $color_even_lighter_green;
+	}
+	
+	.bad {
+		background: $color_light_pink;
 	}
 }
 
@@ -451,6 +460,10 @@ ul.scopes {
 	li {
 		margin: 0 0 0.5em 0;
 	}
+}
+
+ul.list {
+	list-style-type: disc;
 }
 
 ol.list {
