@@ -19,8 +19,10 @@
 		<%= render :partial => "/layouts/header" %>
 
 		<div id="body">
-			<%= render :partial => "/layouts/flash", :locals => {:flash => flash} %>
-			<%= yield %>
+			<div class="gutter">
+				<%= render :partial => "/layouts/flash", :locals => {:flash => flash} %>
+				<%= yield %>
+			</div>
 		</div>
 
 		<%= render :partial => "/layouts/footer" %>
