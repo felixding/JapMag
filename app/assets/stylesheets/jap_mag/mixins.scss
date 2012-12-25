@@ -21,8 +21,7 @@
 	}
 	
 	#wrapper {
-		padding: 10px;
-		margin: 0 auto;
+		padding: 0;
 	}
 	
 	#body {
@@ -36,11 +35,19 @@
 			width: 95%;
 		}
 	}
+	
+	#error_explanation {
+		width: auto;
+	}
 }
 
 @mixin set_width($base_width) {
 	#wrapper {
-		width: $base_width - 20px;
+		width: $base_width !important;
+		
+		.gutter {
+			width: $base_width - 20px;
+		}
 	}
 }
 
