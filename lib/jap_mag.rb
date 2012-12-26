@@ -1,7 +1,19 @@
 module JapMag
   # i18N
   def _ key, options={}
-    key = (key[0] == "/") ? key.gsub("/", "") : "#{params[:controller]}.#{params[:action]}.#{key}"
+    # for absolute pathes /
+    if (key[0] == "/")
+      key = key.gsub("/", "")
+      
+    # for internal references >>/
+    elsif (key[0, 3] == ">>/")
+      key = key.gsub(">>/", "")
+    
+    # for all other cases  
+    else
+      key = "#{params[:controller]}.#{params[:action]}.#{key}"
+    end
+
     t(key, options)
   end
   
