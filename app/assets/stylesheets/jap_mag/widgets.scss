@@ -16,18 +16,17 @@
 
 div.pagination {
 	margin: 10px 0;
+	overflow: hidden;
 
-	em {
+	em, a, span {
 		padding: 10px;
+		float: left;
+		margin: 0 5px 5px 0;
 	}
 
 	.current {
 		background: #aaa;
 		color: #fff;
-	}
-
-	a {
-		padding: 10px;
 	}
 }
 
