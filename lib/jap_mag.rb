@@ -4,10 +4,6 @@ module JapMag
     # for absolute pathes /
     if (key[0] == "/")
       key = key.gsub("/", "")
-      
-    # for internal references >>/
-    elsif (key[0, 3] == ">>/")
-      key = key.gsub(">>/", "")
     
     # for all other cases  
     else
