@@ -63,7 +63,7 @@
 
 @mixin set_width($base_width) {
 	#wrapper {
-		width: $base_width !important;
+		width: $base_width;
 		
 		.gutter {
 			width: $base_width - 20px;
