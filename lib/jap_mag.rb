@@ -3,7 +3,7 @@ module JapMag
   def _ key, options={}
     # for absolute pathes /
     if (key[0] == "/")
-      key = key.gsub("/", "")
+      key = key.sub("/", "")
     
     # for all other cases  
     else
