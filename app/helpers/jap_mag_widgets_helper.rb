@@ -129,11 +129,16 @@ module JapMagWidgetsHelper
   #
   # call to action
   #
-  def cta text, url, html_options={}
+  def cta text, url, html_options={}, options={}
 
     html_options[:class] = (html_options[:class].to_s + " cta").strip
-
-    link_to content_tag(:span, text), url, html_options
+    
+    if options[:disabled]
+      html_options[:class] = (html_options[:class].to_s + " disabled").strip
+      content_tag :span, text, html_options
+    else
+      link_to content_tag(:span, text), url, html_options
+    end
   end
 
   #
