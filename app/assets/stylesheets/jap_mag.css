@@ -9,8 +9,6 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require jap_mag/reset
- *= require jap_mag/variables
  *= require jap_mag/widgets
- *= require jap_mag/base
+ *= require jap_mag/buttons
  */

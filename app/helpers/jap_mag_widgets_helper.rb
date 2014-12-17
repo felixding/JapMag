@@ -1,100 +1,26 @@
 module JapMagWidgetsHelper
-  
   def is_mobile_device?
     mobile_user_agents = 'palm|blackberry|nokia|phone|midp|mobi|symbian|chtml|ericsson|minimo|audiovox|motorola|samsung|telit|upg1|windows ce|ucweb|astel|plucker|x320|x240|j2me|sgh|portable|sprint|docomo|kddi|softbank|android|mmp|pdxgw|netfront|xiino|vodafone|portalmmm|sagem|mot-|sie-|ipod|up\\.b|webos|amoi|novarra|cdm|alcatel|pocket|iphone|mobileexplorer|mobile'
     request.user_agent.to_s.downcase =~ Regexp.new(mobile_user_agents)
   end
-  
+
   def get_body_class
     c = []
     c << controller.controller_name
     c << "mobile" if is_mobile_device?
-    
+
     c.collect{|e| e.titleize.gsub(/\s/, "")}.join " "
   end
-  
+
   def get_body_id
     content_for(:id).to_s.titleize.gsub(/\s/, "") unless content_for(:id).blank?
   end
-  
+
   def get_wrapper_class
     c = []
     c << controller.action_name
-    
+
     c.collect{|e| e.titleize.gsub(/\s/, "")}.join " "
-  end
-
-  #
-  # navigation helper
-  # by Felix
-  #
-  # the helper matches params with request.request_uri
-  #
-  # example:
-  # sections = {
-  #		'radio'=>{:title => 'Station', :url => radio_path},
-  #		'edit_station'=>{:url => 'Radio', :url => edit_station_path}
-  #	}
-  # options = {
-  #    :id => 'test_menu'
-  #    :current => 'current'
-  # }
-  # outputs:
-  # <ul id="test_menu">
-  #   <li><a href="/station">Station</a></li>
-  #   <li class="current"><a href="/radio/">Radio</a></li>
-  # </ul>
-  #:title
-  def menu(sections, options=nil)
-    items = Array.new
-
-    # default options
-    options ||= Hash.new
-    options[:id] ||= nil
-    options[:class] ||= nil
-    options[:current] ||= 'current' # jquery ui tabs plugin needs the later one
-
-    sections.each do |section|
-      klass = section[:current] ? "#{options[:current]} #{section[:class]}".strip : section[:class]
-      items << content_tag(:li, link_to(section[:title], section[:url], :class => klass))   
-    end
-
-    return content_tag :ul, :id => options[:id], :class => options[:class] do
-      items.collect {|item| concat(item)}
-    end
-  end
-
-  def clearfix options={}
-    opt = {:class => " clearfix"}
-    options[:class] += opt[:class] if options[:class]
-    (options[:class] || opt[:class]).strip!
-    opt = opt.merge(options)
-    content_tag(:div, nil, opt)
-  end
-
-  def link_to_user(user, options={})
-
-    default_options = {
-      :href => user,
-      :avatar => false,
-      :title => user.name,
-      :class => ""
-    }
-
-    options = default_options.merge(options)
-
-    if options[:avatar]
-      return unless user.avatar?
-
-      text = image_tag(user.avatar.url(options[:avatar]), :alt => user.name, :class => "avatar")
-
-      options[:class] += " avatar".strip
-    else
-      text = user.name
-    end
-
-    #raise url_for(user)#user_path(:subdomain => "aaa").inspect
-    link_to(text, options[:href], :title => options[:title], :class => options[:class])
   end
 
   def title(*titles)
@@ -111,39 +37,6 @@ module JapMagWidgetsHelper
     page_title_for_return
   end
 
-  def random_disable_with_status
-    status = [
-      "Just a moment",
-      "Let's stay together",
-      "On the highway to hell",
-      "Don't worry baby",
-      "Let it be",
-      "Getting you away from here",
-      "Let's get it started",
-      "It's now or never"
-    ]
-
-    status.shuffle.first + "..."
-  end
-
-  #
-  # call to action
-  #
-  def cta text, url, html_options={}, options={}
-
-    html_options[:class] = (html_options[:class].to_s + " cta").strip
-    
-    if options[:disabled]
-      html_options[:class] = (html_options[:class].to_s + " disabled").strip
-      content_tag :span, text, html_options
-    else
-      link_to content_tag(:span, text), url, html_options
-    end
-  end
-
-  #
-  # paginator
-  #
   def paginator(collections, options={})
     will_paginate collections, options
   end
@@ -151,30 +44,131 @@ module JapMagWidgetsHelper
   def time_difference time
     "#{distance_of_time_in_words(time, Time.now, true)} ago" if time
   end
-  
+
   def current_or_null(condition)
     condition ? "current" : nil
   end
 
-  def scope_button scopes, options={}
-    content_tag :ul, class: :scopes do
-      scopes.collect do |scope|
-        count = options[:count][scope[:key]]
-        url = eval("#{options[:path].to_s}(scope: :#{scope[:key]})")
-        current = ((params[:scope] == scope[:key].to_s) or (scope[:default] and params[:scope].blank?))
-
-        concat content_tag(:li, link_to("#{content_tag(:span, scope[:text])} (#{count})".html_safe, url, class: current_or_null(current)))
-      end
-    end
-  end
-  
   def last_deployed_at
     file = File.join("tmp", "restart.txt")
     File.exists?(file) ? File.atime(file) : nil
   end
+  
+  def bootstrap_menu links
+    links.collect do |link|
+      klass = []
+      klass << link[:klass] if link[:klass]
+      klass << "last-child" if link == links.last
+
+      if (link[:controller_action].is_a?(Array) and current_controller_action_in?(*link[:controller_action])) \
+        or (current_controller_action_in?(link[:controller_action]))
+        klass << "active"
+      end
+
+      klass = klass.empty? ? nil : klass.join(" ")
+      
+      content_tag :li, class: klass do
+        link_to link[:text], link[:path], link[:html_options]
+      end
+    end.join.html_safe
+  end
+  
+  def bootstrap_scope_button scopes, options = {}
+    content_tag :ul, class: "nav nav-tabs" do
+      scopes.collect do |scope|
+        url = eval("#{options[:path].to_s}(scope: :#{scope[:key]})")
+        current = ((params[:scope] == scope[:key].to_s) or (scope[:default] and scope[:default] == true and params[:scope].blank?))
+        link = link_to("#{content_tag(:span, scope[:text])} (#{scope[:count]})".html_safe, url)
+
+        concat content_tag(:li, link, class: (current ? :active : nil))
+      end
+    end
+  end
+
+  def bootstrap_button_group checkbox, id = nil, status = nil, default = nil
+    status ||= %w(turned_on turned_off)
+    default ||= "turned_off"
+
+    content_tag :div, "id" => id, "class" => "bootstrap-toggle" do
+      buttons = content_tag :div, "class" => "btn-group", "data-toggle" => "buttons-radio" do
+        status.collect do |s|
+          content_tag :button, "type" => "button", "class" => "btn btn-default #{s}#{" active" if s == default}", "data-status" => s do
+            _("/page.my.pac.status.#{s}")
+          end
+        end.join.html_safe
+      end
+
+      buttons + checkbox
+    end
+  end
+
+  def bootstrap_stacked_progress_bar percent, options = {}
+    klass = if percent < 50
+              :success
+            elsif percent >= 50 and percent < 80
+              :warning
+            else
+              :danger
+            end
+
+    #percent = "#{percent * 100}%"
+    options[:precision] ||= 2
+    percent = number_to_percentage percent, options
+
+    opts_for_container = {class: :progress}
+    if options[:tooltip]
+      placement = options[:tooltip][:placement] || "top"
+      opts_for_container.merge!("data-toggle" => "tooltip", "data-placement" => placement, title: options[:tooltip][:title])
+    end
+
+    content_tag :div, opts_for_container do
+      content_tag :div, class: "progress-bar progress-bar-#{klass}", role: :progressbar, style: "width: #{percent}" do
+        percent
+      end
+    end
+  end
+  
+  def link_to_external text, link, options={}
+    options.merge!(target: :_blank)
+
+    if options[:anonymous]
+      link = "http://anonym.to/?#{link}"
+      options.delete(:anonymous)
+    end
+
+    link_to "#{text}#{fa_icon "external-link"}".html_safe, link, options
+  end
+  
+  def input_for_selection text
+    (content_tag :input, nil, value: text, class: "form-input for-selection").html_safe
+  end
+
+  #
+  # call to action
+  #
+  def cta text, url, opts = {}
+    klass = %w(button button-rounded button-caution)
+    klass << opts[:class] if opts[:class].present?
+    opts[:class] = klass.join(" ")
+
+    link_to text, url, opts
+  end
+
+  def cta_params opts = {}
+    {data: {disable_with: _("/wait")}, class: "button button-rounded button-caution"}.merge opts
+  end
+  
+  def long_date date
+    I18n.l date, format: :long
+  end
+  
+  
+  def short_date date
+    I18n.l date, format: :short
+  end
 
   protected
-  
+
   def current_template
     File.basename(lookup_context.find_all(params[:action], params[:controller]).first.inspect)
   end

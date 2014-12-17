@@ -4,15 +4,15 @@ module JapMag
     # for absolute pathes /
     if (key[0] == "/")
       key = key.sub("/", "")
-    
-    # for all other cases  
+
+    # for all other cases
     else
       key = "#{params[:controller]}.#{params[:action]}.#{key}"
     end
 
     t(key, options)
   end
-  
+
   def current_controller_action_in?(*args)
     controller = params["controller"]
     action = params["action"]
@@ -26,15 +26,15 @@ module JapMag
         return true if controller == element
       end
     end
-  
+
     false
   end
-  
+
   def self.included base
     base.helper_method :_
     base.helper_method :current_controller_action_in?
   end
-  
+
   class Engine < Rails::Engine
   end
 end
