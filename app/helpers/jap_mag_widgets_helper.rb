@@ -53,7 +53,7 @@ module JapMagWidgetsHelper
     file = File.join("tmp", "restart.txt")
     File.exists?(file) ? File.atime(file) : nil
   end
-  
+
   def bootstrap_menu links
     links.collect do |link|
       klass = []
@@ -66,13 +66,13 @@ module JapMagWidgetsHelper
       end
 
       klass = klass.empty? ? nil : klass.join(" ")
-      
+
       content_tag :li, class: klass do
         link_to link[:text], link[:path], link[:html_options]
       end
     end.join.html_safe
   end
-  
+
   def bootstrap_scope_button scopes, options = {}
     content_tag :ul, class: "nav nav-tabs" do
       scopes.collect do |scope|
@@ -127,7 +127,7 @@ module JapMagWidgetsHelper
       end
     end
   end
-  
+
   def link_to_external text, link, options={}
     options.merge!(target: :_blank)
 
@@ -138,7 +138,7 @@ module JapMagWidgetsHelper
 
     link_to "#{text}#{fa_icon "external-link"}".html_safe, link, options
   end
-  
+
   def input_for_selection text
     (content_tag :input, nil, value: text, class: "form-input for-selection").html_safe
   end
@@ -157,12 +157,12 @@ module JapMagWidgetsHelper
   def cta_params opts = {}
     {data: {disable_with: _("/wait")}, class: "button button-rounded button-caution"}.merge opts
   end
-  
+
   def long_date date
     I18n.l date, format: :long
   end
-  
-  
+
+
   def short_date date
     I18n.l date, format: :short
   end
