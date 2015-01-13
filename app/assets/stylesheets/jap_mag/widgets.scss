@@ -23,7 +23,7 @@ div.pagination {
 	}
 }
 
-#flash {	
+#flash {
 	div {
 		margin: 10px auto;
 		color: white;
@@ -62,11 +62,9 @@ div.pagination {
 .field_with_errors {
   padding: 2px;
   background-color: red;
-  display: table;
 }
 
 #error_explanation {
-  width: 450px;
   border: 2px solid red;
   padding: 7px;
   padding-bottom: 0;
@@ -83,8 +81,8 @@ div.pagination {
     background-color: #c00;
     color: #fff;
 	}
- 
+
 	ul {
 	  list-style: square;
-	} 
+	}
 }

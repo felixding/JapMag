@@ -155,7 +155,7 @@ module JapMagWidgetsHelper
   end
 
   def cta_params opts = {}
-    {data: {disable_with: _("/wait")}, class: "button button-rounded button-caution"}.merge opts
+    {data: {disable_with: _("/actions.wait")}, class: "button button-rounded button-caution"}.merge opts
   end
 
   def long_date date
