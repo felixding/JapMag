@@ -140,7 +140,7 @@ module JapMagWidgetsHelper
   end
 
   def input_for_selection text
-    (content_tag :input, nil, value: text, class: "form-input for-selection").html_safe
+    (content_tag :input, nil, value: text, size: text.length, class: "form-input for-selection").html_safe
   end
 
   #
