@@ -13,6 +13,28 @@ module JapMag
     t(key, options)
   end
 
+  def current_locale
+    params[:locale] || I18n.default_locale || extract_locale_from_accept_language_header
+  end
+
+  def extract_locale_from_accept_language_header
+    if request.env and request.env['HTTP_ACCEPT_LANGUAGE']
+      lang = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+    else
+      lang = nil
+    end
+
+    lang == "zh" ? "zh-CN" : "en"
+  end
+
+  def current_path
+    URI.encode(request.fullpath)
+  end
+
+  def current_url
+    URI.encode(request.original_url)
+  end
+
   #
   # the args can be one of the following:
   #
@@ -56,6 +78,9 @@ module JapMag
   def self.included base
     base.helper_method :_
     base.helper_method :current_controller_action_in?
+    base.helper_method :current_locale
+    base.helper_method :current_url
+    base.helper_method :current_path
   end
 
   class Engine < Rails::Engine
