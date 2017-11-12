@@ -2,9 +2,9 @@
 require File.expand_path('../lib/jap_mag/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Felix Ding"]
+  gem.authors       = ["DING Yu"]
   gem.email         = ["felixding@gmail.com"]
-  gem.description   = %q{JapMag is the design language created by Felix Ding. This gem helps designers start a project that follows JapMag.}
+  gem.description   = %q{JapMag is a collection of frequently-used Rails controller methods and helpers.}
   gem.summary       = "jap_mag-#{gem.version}"
   gem.homepage      = "https://github.com/felixding/JapMag"
 
@@ -14,4 +14,6 @@ Gem::Specification.new do |gem|
   gem.name          = "jap_mag"
   gem.require_paths = ["lib"]
   gem.version       = JapMag::VERSION
+
+  gem.add_runtime_dependency :will_paginate
 end

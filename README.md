@@ -1,10 +1,8 @@
-# JapMag
+# Introduction
 
-JapMag is the design language created by Felix Ding in the spring of 2012. The essential idea behind JapMag is Japanese Minimalism. It focuses on content itself, and aims to solve information overload. On interaction design, JapMag advocates a flat information architecutre, a one-task-one-step method and a natural content flow on each page. Visually, JapMag stresses typography, whitespace and uses graphical elements as little as possible. Technically, JapMag avoids using Javascript, or overriding browsers' default behaviors.
+JapMag is a collection of frequently-used Rails controller methods and helpers.
 
-This gem helps designers start a project that follows JapMag design language. It consists of several CSS definations, Rails helpers and view templates. Think this gem as an UI kit similar to Twitter's Bootstrap, but more tightly integrated with Ruby on Rails.
-
-## Installation
+## Installation & Usage
 
 Please note JapMag only supports Rails 3+.
 
@@ -29,14 +27,10 @@ In your Javascript manifest (application.js in default):
 In your app/controllers/application_controll.rb, add
 
      include JapMag
-     
+
 For a new Rails app, delete app/views/layout/application.html.erb.
 
 Done! Now start your Rails app and you will see a JapMag-powered website!
-     
-## Usage
-
-Documentation is on the way. Stay tuned!
 
 ## Contributing
 
@@ -45,3 +39,7 @@ Documentation is on the way. Stay tuned!
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## License
+
+Code released under the [MIT License](https://opensource.org/licenses/MIT).
