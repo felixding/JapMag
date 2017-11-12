@@ -23,7 +23,7 @@ module JapMagWidgetsHelper
     c.collect{|e| e.titleize.gsub(/\s/, "")}.join " "
   end
 
-  def title(*titles)
+  def title *titles
     seperator = " - "
 
     default_options = {sitename: _("/logo")}
@@ -32,21 +32,13 @@ module JapMagWidgetsHelper
     page_title = page_title_for_return = titles.join(seperator)
     page_title = options[:sitename] + seperator + page_title_for_return if not options[:sitename].blank?
 
-    content_for(:title, page_title)
+    content_for :title, page_title
 
     page_title_for_return
   end
 
-  def paginator(collections, options={})
+  def paginator collections, options = {}
     will_paginate collections, options
-  end
-
-  def time_difference time
-    "#{distance_of_time_in_words(time, Time.now, true)} ago" if time
-  end
-
-  def current_or_null(condition)
-    condition ? "current" : nil
   end
 
   def last_deployed_at
@@ -128,7 +120,7 @@ module JapMagWidgetsHelper
     end
   end
 
-  def link_to_external text, link, options={}
+  def link_to_external text, link, options = {}
     options.merge!(target: :_blank)
 
     if options[:anonymous]
@@ -146,16 +138,16 @@ module JapMagWidgetsHelper
   #
   # call to action
   #
-  def cta text, url, opts = {}
+  def cta text, url, options = {}
     klass = %w(button button-rounded button-caution)
-    klass << opts[:class] if opts[:class].present?
-    opts[:class] = klass.join(" ")
+    klass << options[:class] if options[:class].present?
+    options[:class] = klass.join(" ")
 
-    link_to text, url, opts
+    link_to text, url, options
   end
 
-  def cta_params opts = {}
-    {data: {disable_with: _("/actions.wait")}, class: "button button-rounded button-caution"}.merge opts
+  def cta_params options = {}
+    {data: {disable_with: _("/actions.wait")}, class: "button button-rounded button-caution"}.merge options
   end
 
   def long_date date
@@ -165,6 +157,32 @@ module JapMagWidgetsHelper
 
   def short_date date
     I18n.l date, format: :short
+  end
+
+  def retina_image_tag name_at_1x, options = {}
+    # webp for Chrome
+    if options[:webp]
+      name_at_1x = name_at_1x.gsub /\.[a-zA-Z]+$/, '.webp'
+
+      options.delete :webp
+    end
+
+    # retina
+    name_at_2x = name_at_1x.gsub /\.\w+$/, "@2x\\0"
+
+    # i18n
+    if options[:i18n]
+      name_at_1x = name_at_1x.gsub /\.[a-zA-Z]+$/, ".#{current_locale}\\0"
+      name_at_2x = name_at_2x.gsub /\.[a-zA-Z]+$/, ".#{current_locale}\\0"
+
+      options.delete :i18n
+    end
+
+    # HTML 5 specific tag attributes
+    srcset = "#{asset_path(name_at_1x)} 1x, #{asset_path(name_at_2x)} 2x"
+    options = options.merge(srcset: srcset)
+
+    image_tag name_at_1x, options
   end
 
   protected
