@@ -172,8 +172,8 @@ module JapMagWidgetsHelper
 
     # i18n
     if options[:i18n]
-      name_at_1x = name_at_1x.gsub /\.[a-zA-Z]+$/, ".#{current_locale}\\0"
-      name_at_2x = name_at_2x.gsub /\.[a-zA-Z]+$/, ".#{current_locale}\\0"
+      name_at_1x = name_at_1x.gsub /\.[a-zA-Z]+$/, ".#{I18n.locale}\\0"
+      name_at_2x = name_at_2x.gsub /\.[a-zA-Z]+$/, ".#{I18n.locale}\\0"
 
       options.delete :i18n
     end
