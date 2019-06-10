@@ -128,7 +128,7 @@ module JapMagWidgetsHelper
       options.delete(:anonymous)
     end
 
-    link_to "#{text}#{fa_icon "external-link"}".html_safe, link, options
+    link_to "#{text}#{fa_icon "external-link-alt", type: :fas}".html_safe, link, options
   end
 
   def input_for_selection text
