@@ -66,15 +66,15 @@ module JapMagWidgetsHelper
   end
 
   def bootstrap_scope_button scopes, options = {}
-    content_tag :ul, class: "nav-tabs simple-tabs" do
+    content_tag :ul, class: "nav nav-tabs simple-tabs" do
       scopes.collect do |scope|
         url = eval("#{options[:path].to_s}(scope: :#{scope[:key]})")
         current = ((params[:scope] == scope[:key].to_s) or (scope[:default] and scope[:default] == true and params[:scope].blank?))
-        link = link_to("#{content_tag(:span, scope[:text])} (#{scope[:count]})".html_safe, url, class: 'nav-link')
-        klass = %w(nav-item)
+        klass = %w(nav-link)
         klass << :active if current
+        link = link_to("#{content_tag(:span, scope[:text])} (#{scope[:count]})".html_safe, url, class: klass.join(' '))
 
-        concat content_tag(:li, link, class: klass.join(' '))
+        concat content_tag(:li, link, class: 'nav-item')
       end
     end
   end
