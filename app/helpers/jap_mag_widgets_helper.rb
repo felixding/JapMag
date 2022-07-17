@@ -24,12 +24,15 @@ module JapMagWidgetsHelper
   end
 
   def title *titles
-    seperator = " - "
+    default_options = {
+      sitename: I18n.t("logo"),
+      seperator: ' - '
+    }
 
-    default_options = {sitename: _("/logo")}
     options = titles.last.is_a?(Hash) ? titles.pop : {}
     options = default_options.merge(options)
-    page_title = page_title_for_return = titles.join(seperator)
+
+    page_title = page_title_for_return = titles.join(options[:seperator])
     page_title = options[:sitename] + seperator + page_title_for_return if not options[:sitename].blank?
 
     content_for :title, page_title
