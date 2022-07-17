@@ -33,7 +33,7 @@ module JapMagWidgetsHelper
     options = default_options.merge(options)
 
     page_title = page_title_for_return = titles.join(options[:seperator])
-    page_title = options[:sitename] + seperator + page_title_for_return if not options[:sitename].blank?
+    page_title = options[:sitename] + options[:seperator] + page_title_for_return if not options[:sitename].blank?
 
     content_for :title, page_title
 
