@@ -43,29 +43,15 @@ module JapMag
   # multiple arguments: "page#index", "page#intro"
   #
   def current_controller_action_in?(*args)
-    controller = params["controller"]
-    action = params["action"]
+    controller = params[:controller]
+    action = params[:action]
+    #raise args.inspect if args != 'homepage/page#index'
 
-    if args.size == 1
-      if args.first.is_a?(Array)
-        arguments = args.first.split(" ").first
-      elsif args.first.is_a?(String)
-        if args.first.split(" ").size > 1
-          arguments = args.first.split(" ")
-        else
-          arguments = args
-        end
-      end
-    else
-      arguments = args
-    end
+    args = args.first if args.size == 1 && args.first.is_a?(Array)
 
-    #raise arguments.inspect
-
-    arguments.each do |element|
-      if element.include?("#")
-        array = element.match(/([a-z\-\_\/]*)#([a-z\-\_]*)/).to_a
-        c, a = array[1], array[2]
+    args.each do |element|
+      if element.to_s.include?("#")
+        c, a = element.split('#')
         return true if controller == c && action == a
       else
         return true if controller == element
