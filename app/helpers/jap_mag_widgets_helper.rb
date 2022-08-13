@@ -190,6 +190,20 @@ module JapMagWidgetsHelper
     image_tag name_at_1x, options
   end
 
+  def section_t key, opts = {}
+    I18n.t "#{params[:controller]}.#{params[:action]}.sections.#{key}", opts
+  end
+
+  def render_sections *args, **opts
+    opts = {locals: {}}.merge(opts)
+
+    args.collect do |section|
+      tpl = "#{params[:controller].gsub('#', '/')}/#{params[:action]}/#{section}"
+
+      render partial: tpl, locals: opts[:locals]
+    end.join.html_safe
+  end
+
   protected
 
   def current_template
