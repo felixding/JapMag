@@ -191,7 +191,7 @@ module JapMagWidgetsHelper
   end
 
   def section_t key, opts = {}
-    I18n.t "#{params[:controller]}.#{params[:action]}.sections.#{key}", opts
+    I18n.t "#{params[:controller]}.#{params[:action]}.sections.#{key}", **opts
   end
 
   def render_sections *args, **opts

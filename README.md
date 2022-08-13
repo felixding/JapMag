@@ -2,7 +2,7 @@
 
 JapMag is a collection of frequently-used Rails controller methods, helpers, Javascript functions and SASS mixins. It helps quickly bootstrap a Rails app.
 
-For example, [current_controller_action_in?](https://github.com/felixding/JapMag/blob/master/lib/jap_mag.rb#L38) is a helper that checks if current request.controller and request.action match with a set of given rules. You can then for example show or hide certain things on your app depending if it matches or not. 
+For example, [current_controller_action_in?](https://github.com/felixding/JapMag/blob/master/lib/jap_mag.rb#L38) is a helper that checks if current request.controller and request.action match with a set of given rules. You can then for example show or hide certain things on your app depending if it matches or not.
 
 Another example is [retina_image_tag](https://github.com/felixding/JapMag/blob/master/app/helpers/jap_mag_widgets_helper.rb#L164) which can easily generate HTML `img` tags for Retina/Non-retina screens. It also helps you deal with localized images.
 
@@ -10,7 +10,7 @@ This project was first created in 2012.
 
 ## Installation & Usage
 
-Please note JapMag only supports Rails 3+.
+Please note JapMag only supports Rails 3+. And starting from v1.4.0, Ruby 3.0+ is required.
 
 Add this line to your application's Gemfile:
 
