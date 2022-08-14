@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  ruby:
+    image: 'ruby:3.1.2-alpine'
+    working_dir: /app/
+    volumes:
+      - .:/app:cached
+    command: sh -c "bundle && bundle exec rspec"

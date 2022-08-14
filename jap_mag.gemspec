@@ -8,7 +8,8 @@ Gem::Specification.new do |gem|
   gem.summary       = "jap_mag-#{gem.version}"
   gem.homepage      = "https://github.com/felixding/JapMag"
 
-  gem.files         = `git ls-files`.split($\)
+  #gem.files         = `git ls-files`.split($\)
+  gem.files = Dir['**/*'].keep_if { |file| File.file?(file) }
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "jap_mag"
@@ -16,4 +17,5 @@ Gem::Specification.new do |gem|
   gem.version       = JapMag::VERSION
 
   gem.add_runtime_dependency :will_paginate
+  gem.add_development_dependency "rspec"
 end

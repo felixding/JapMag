@@ -38,23 +38,26 @@ module JapMag
   #
   # the args can be one of the following:
   #
-  # String: "page#index"
+  # String: "page#index page#intro"
   # Array: %w(page#index page#intro)
   # multiple arguments: "page#index", "page#intro"
   #
   def current_controller_action_in?(*args)
-    controller = params[:controller]
-    action = params[:action]
-    #raise args.inspect if args != 'homepage/page#index'
-
-    args = args.first if args.size == 1 && args.first.is_a?(Array)
+    if args.size == 1
+      case args.first.class.to_s
+      when 'Array'
+        args = args.first
+      when 'String'
+        args = args.first.split(' ')
+      end
+    end
 
     args.each do |element|
       if element.to_s.include?("#")
         c, a = element.split('#')
-        return true if controller == c && action == a
+        return true if params[:controller] == c && params[:action] == a
       else
-        return true if controller == element
+        return true if params[:controller] == element
       end
     end
 
