@@ -196,7 +196,7 @@ module JapMagWidgetsHelper
     I18n.t "#{params[:controller]}.#{params[:action]}.sections.#{key}", **opts
   end
 
-  def render_sections *args, **opts
+  def render_sections *args, opts
     opts = {locals: {}}.merge(opts)
 
     args.collect do |section|
