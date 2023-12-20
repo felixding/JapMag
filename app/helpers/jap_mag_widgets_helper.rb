@@ -196,8 +196,13 @@ module JapMagWidgetsHelper
     I18n.t "#{params[:controller]}.#{params[:action]}.sections.#{key}", **opts
   end
 
-  def render_sections *args, opts
-    opts = {locals: {}}.merge(opts)
+  def render_sections *args
+    opts = {locals: {}}
+
+    if args.last.is_a?(Hash)
+      opts.merge!(args.last)
+      args.pop
+    end
 
     args.collect do |section|
       tpl = "#{params[:controller].gsub('#', '/')}/#{params[:action]}/#{section}"
