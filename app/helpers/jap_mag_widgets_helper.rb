@@ -204,8 +204,10 @@ module JapMagWidgetsHelper
       args.pop
     end
 
+    path = opts[:path] || "#{params[:controller].gsub('#', '/')}/#{params[:action]}"
+
     args.collect do |section|
-      tpl = "#{params[:controller].gsub('#', '/')}/#{params[:action]}/#{section}"
+      tpl = "#{path}/#{section}"
 
       render partial: tpl, locals: opts[:locals]
     end.join.html_safe
